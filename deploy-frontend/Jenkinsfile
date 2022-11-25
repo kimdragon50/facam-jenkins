@@ -46,7 +46,7 @@ pipeline {
         //             """
         //     }
         // }
-        stage ('Deploy') {
+        stage ('Ansible Deploy') {
             steps {
                 sh  """
                     git clone https://github.com/kimdragon50/facam-ansible.git 
