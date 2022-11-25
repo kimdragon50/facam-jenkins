@@ -2,11 +2,6 @@
 pipeline {
     agent any
     stages {
-        stage ('Workspace Clean') {
-            steps {
-             cleanWs()   
-            }
-        }
         // stage ('Build - npm build') {
         //     steps {
         //         sh script: """\
@@ -53,6 +48,11 @@ pipeline {
                     cd  facam-ansible 
                     ansible-playbook deploy_backend.yml -i ./hosts/hosts --extra-vars "deploy_hosts=app" 
                     """
+            }
+        }
+        stage ('Workspace Clean') {
+            steps {
+             cleanWs()   
             }
         }
     }
