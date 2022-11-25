@@ -27,7 +27,7 @@ pipeline {
                     """
             }
         }
-        stage ('Maven build') {
+        stage ('Maven Build') {
             steps {
                 sh  """
                     cd facam-backend
