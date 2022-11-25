@@ -7,16 +7,18 @@ pipeline {
              cleanWs()   
             }
         }
-        // stage ('Build - npm build') {
-        //     steps {
-        //         sh script: """\
-        //                     git clone https://github.com/kimdragon50/facam-frontend.git \
-        //                     cd facam-frontend \
-        //                     npm install \
-        //                     npm build \
-        //                     """, returnStdout: true
-        //     }
-        // }
+        stage ('Build - npm build') {
+            steps {
+                sh script: """\
+                            echo ${WORKSPACE}
+                            git clone https://github.com/kimdragon50/facam-frontend.git \
+                            cd facam-frontend \
+                            npm install \
+                            npm build \
+                            cp -r build/* /usr/share/nginx/html/
+                            """, returnStdout: true
+            }
+        }
         stage ('Deploy') {
             steps {
                 sh script: """\
