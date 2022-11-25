@@ -20,7 +20,6 @@ pipeline {
         stage ('Deploy') {
             steps {
                 sh script: """\
-                            sudo -s
                             git clone https://github.com/kimdragon50/facam-ansible.git 
                             cd  facam-ansible 
                             ansible-playbook deploy_backend.yml -i ./hosts/hosts --extra-vars "deploy_hosts=app" 
