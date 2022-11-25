@@ -39,6 +39,7 @@ pipeline {
         stage ('copy jar') {
             steps {
                 sh script: """\
+                            pwd
                             cp ./target/employee-management-backend-0.0.1-SNAPSHOT.jar /usr/local/share
                             """, returnStdout: true
             }
