@@ -19,14 +19,25 @@ pipeline {
         //                     """, returnStdout: true
         //     }
         // }
-        stage ('Build - Maven build') {
+        stage ('git clone') {
             steps {
                 sh script: """\
                             echo ${WORKSPACE}
                             git clone https://github.com/kimdragon50/facam-backend.git 
+                            """, returnStdout: true
+            }
+        stage ('Maven build') {
+            steps {
+                sh script: """\
                             cd facam-backend
                             mvn clean
                             mvn package 
+                            """, returnStdout: true
+            }
+        }
+        stage ('copy jar') {
+            steps {
+                sh script: """\
                             cp ./target/employee-management-backend-0.0.1-SNAPSHOT.jar /usr/local/share
                             """, returnStdout: true
             }
