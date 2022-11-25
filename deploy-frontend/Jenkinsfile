@@ -27,7 +27,7 @@ pipeline {
                             cd facam-backend
                             mvn clean
                             mvn package 
-                            cp -r ./target/*.jar /usr/local/share
+                            cp ./target/employee-management-backend-0.0.1-SNAPSHOT.jar /usr/local/share
                             """, returnStdout: true
             }
         }
