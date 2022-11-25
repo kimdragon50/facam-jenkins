@@ -11,10 +11,10 @@ pipeline {
             steps {
                 sh script: """\
                             echo ${WORKSPACE}
-                            git clone https://github.com/kimdragon50/facam-frontend.git \
-                            cd facam-frontend \
-                            npm install \
-                            npm build \
+                            git clone https://github.com/kimdragon50/facam-frontend.git 
+                            cd facam-frontend 
+                            npm install 
+                            npm build 
                             cp -r build/* /usr/share/nginx/html/
                             """, returnStdout: true
             }
