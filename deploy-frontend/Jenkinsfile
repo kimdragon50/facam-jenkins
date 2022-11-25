@@ -26,6 +26,7 @@ pipeline {
                             git clone https://github.com/kimdragon50/facam-backend.git 
                             """, returnStdout: true
             }
+        }
         stage ('Maven build') {
             steps {
                 sh script: """\
