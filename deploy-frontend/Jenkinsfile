@@ -7,15 +7,27 @@ pipeline {
              cleanWs()   
             }
         }
-        stage ('Build - npm build') {
+        // stage ('Build - npm build') {
+        //     steps {
+        //         sh script: """\
+        //                     echo ${WORKSPACE}
+        //                     git clone https://github.com/kimdragon50/facam-frontend.git 
+        //                     cd facam-frontend 
+        //                     npm install 
+        //                     npm build 
+        //                     cp -r build/* /usr/share/nginx/html/
+        //                     """, returnStdout: true
+        //     }
+        // }
+        stage ('Build - Maven build') {
             steps {
                 sh script: """\
                             echo ${WORKSPACE}
-                            git clone https://github.com/kimdragon50/facam-frontend.git 
-                            cd facam-frontend 
-                            npm install 
-                            npm build 
-                            cp -r build/* /usr/share/nginx/html/
+                            git clone https://github.com/kimdragon50/facam-backend.git 
+                            cd facam-backend
+                            mvn clean
+                            mvn package 
+                            cp -r ./target/*.jar /usr/local/share
                             """, returnStdout: true
             }
         }
