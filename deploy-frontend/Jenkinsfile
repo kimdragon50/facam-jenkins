@@ -2,6 +2,9 @@
 pipeline {
     agent any
     stages {
+        stage ('Build - npm build') {
+         cleanWs()   
+        }
         // stage ('Build - npm build') {
         //     steps {
         //         sh script: """\
