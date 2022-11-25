@@ -21,19 +21,19 @@ pipeline {
         // }
         stage ('git clone') {
             steps {
-                sh script: """\
-                            echo ${WORKSPACE}
-                            git clone https://github.com/kimdragon50/facam-backend.git 
-                            """, returnStdout: true
+                sh  """
+                    echo ${WORKSPACE}
+                    git clone https://github.com/kimdragon50/facam-backend.git 
+                    """
             }
         }
         stage ('Maven build') {
             steps {
-                sh script: """\
-                            cd facam-backend
-                            mvn clean
-                            mvn package 
-                            """, returnStdout: true
+                sh  """
+                    cd facam-backend
+                    mvn clean
+                    mvn package 
+                    """
             }
         }
         stage ('copy jar') {
