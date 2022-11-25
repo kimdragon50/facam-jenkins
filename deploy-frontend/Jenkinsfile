@@ -38,19 +38,19 @@ pipeline {
         }
         stage ('copy jar') {
             steps {
-                sh script: """\
-                            pwd
-                            cp ./target/employee-management-backend-0.0.1-SNAPSHOT.jar /usr/local/share
-                            """, returnStdout: true
+                sh  """
+                    pwd
+                    cp ./target/employee-management-backend-0.0.1-SNAPSHOT.jar /usr/local/share
+                    """
             }
         }
         stage ('Deploy') {
             steps {
-                sh script: """\
-                            git clone https://github.com/kimdragon50/facam-ansible.git 
-                            cd  facam-ansible 
-                            ansible-playbook deploy_backend.yml -i ./hosts/hosts --extra-vars "deploy_hosts=app" 
-                            """, returnStdout: true
+                sh  """
+                    git clone https://github.com/kimdragon50/facam-ansible.git 
+                    cd  facam-ansible 
+                    ansible-playbook deploy_backend.yml -i ./hosts/hosts --extra-vars "deploy_hosts=app" 
+                    """
             }
         }
     }
