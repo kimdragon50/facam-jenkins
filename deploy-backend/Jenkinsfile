@@ -14,12 +14,6 @@ pipeline {
         //                     """, returnStdout: true
         //     }
         // }
-        stage ('Workspace Clean') {
-            steps {
-             cleanWs()   
-            }
-        }
-        
         stage ('git clone') {
             steps {
                 sh  """
