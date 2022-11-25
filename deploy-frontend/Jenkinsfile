@@ -1,6 +1,7 @@
 
 pipeline {
     agent any
+    tools {nodejs "nodejs"}
     stages {
         stage ('Workspace Clean') {
             steps {
