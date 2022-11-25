@@ -1,0 +1,28 @@
+
+pipeline {
+    agent any
+    stages {
+        // stage ('Build - npm build') {
+        //     steps {
+        //         sh script: """\
+        //                     git clone https://github.com/kimdragon50/facam-frontend.git \
+        //                     cd facam-frontend \
+        //                     npm install \
+        //                     npm build \
+        //                     """, returnStdout: true
+        //     }
+        // }
+        stage ('Deploy') {
+            steps {
+                sh script: """\
+                            git clone https://github.com/kimdragon50/facam-ansible.git 
+                            cd  facam-ansible 
+                            ansible-playbook deploy_backend.yml -i ./hosts --extra-vars "deploy_hosts=app" 
+                            """, returnStdout: true
+            }
+        }
+    }
+}
+
+
+
