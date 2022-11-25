@@ -2,8 +2,10 @@
 pipeline {
     agent any
     stages {
-        stage ('Build - npm build') {
-         cleanWs()   
+        stage ('Workspace Clean') {
+            steps {
+             cleanWs()   
+            }
         }
         // stage ('Build - npm build') {
         //     steps {
