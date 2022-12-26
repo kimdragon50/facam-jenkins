@@ -29,6 +29,13 @@ pipeline {
                 sh  """
                     git clone https://github.com/kimdragon50/facam-ansible.git 
                     cd  facam-ansible 
+                    
+                    MY_KEYPAIR_NAME = ""
+                    MY_APP_PRIVATE_IP = "" 
+                    
+                    sed -i 's/MY_KEYPAIR/${MY_KEYPAIR_NAME}/g' hosts/hosts
+                    sed -i 's/MY_APP_PRIVATE_IP/${MY_APP_PRIVATE_IP}/g' hosts/hosts
+                    
                     ansible-playbook deploy_backend.yml -i ./hosts/hosts --extra-vars "deploy_hosts=app" 
                     """
             }
